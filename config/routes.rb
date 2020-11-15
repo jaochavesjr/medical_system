@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
 
   root to: 'dashboard#index'
-  #get 'dashboard', to: 'dashboard#index'
 
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resources :dashboard, only: [:index]
+  resources :appointments, only: [:index, :edit, :new, :create, :update, :destroy]
+  resources :patients, only: [:index, :edit, :new, :create, :update, :destroy]
+  resources :doctors, only: [:index, :edit, :new, :create, :update, :destroy]
+
 end

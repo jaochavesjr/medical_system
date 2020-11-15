@@ -1,0 +1,54 @@
+<div class="container-fluid">
+
+          <!-- Page Heading -->
+          <div>
+
+          </div>
+          <!-- DataTales Example -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary"> New Doctor
+                <a href="/doctors/new">
+                  <button type="button" class="btn btn-success" style="margin-left:15px ;"><i class="fas fa-user-plus"></i></button>
+
+                </a>
+              </h6>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table id="myTable" class="table table-bordered table-striped table-hover" width="100%" cellspacing="0">
+                  <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>CRM</th>
+                            <th>CRM_UF</th>
+                            <th>Actions</th>
+                        </tr>
+                </thead>
+                <tbody>
+                    <% @doctors.each do |doctor| %>
+                        <tr>
+                            <td> <%= doctor.id %> </td>
+                            <td> <%= doctor.name %> </td>
+                            <td> <%= doctor.crm %> </td>
+                            <td> <%= doctor.crm_uf %> </td>
+                            <td>
+                                <%= link_to doctor_path(doctor),
+                                    class: "btn btn-primary btn-xs btn-green-alt" do %>
+                                    Edit
+                                <% end %>
+                                <%= link_to doctor_path(doctor), data: {confirm: "Are you sure!"}, :method => :delete,
+                                    class: "btn btn-primary btn-xs btn-red-alt" do %>
+                                    Delete
+                                <% end %>
+                            </td>
+                        </tr>
+                    <% end %>
+                </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+        </div>
