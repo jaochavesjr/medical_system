@@ -15,7 +15,6 @@
 
   <!-- Page Wrapper -->
   <div id="wrapper">
-
     <!-- Sidebar -->
     <%= render partial: "layouts/shared/sidebar"%>
     <!-- End of Sidebar -->
@@ -30,18 +29,17 @@
           <%= yield %>
         </div>
       </div>
+
       <%= render partial: "layouts/shared/footer"%>
     </div>
   </div>
-
-
-    <%= javascript_pack_tag 'application' %>
-    <script>
-        $(document).ready(function() {
-            $('#myTable').DataTable();
-        });
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"></script>
+  <%= javascript_pack_tag 'application' %>
+  <script>
+    $(document).ready(function() {
+        $('#myTable').DataTable();
+    });
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"></script>
 </body>
 
 </html>

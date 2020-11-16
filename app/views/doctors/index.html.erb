@@ -1,6 +1,6 @@
 <div class="container-fluid">
-  <div class="card" style="height: 20rem;">
-    <div class="card-header py-1">
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
       <h6 class="m-0 font-weight-bold text-primary"> New Doctor
         <a href="/doctors/new">
           <button type="button" class="btn btn-success" style="margin-left:15px ;"><i class="fas fa-user-plus"></i></button>
@@ -27,12 +27,12 @@
                 <td> <%= doctor.crm %> </td>
                 <td> <%= doctor.crm_uf %> </td>
                 <td>
-                  <%= link_to doctor_path(doctor),
+                  <%= link_to edit_doctor_path(doctor),
                       class: "btn btn-primary btn-xs btn-green-alt" do %>
                       Edit
                   <% end %>
                   <%= link_to doctor_path(doctor), data: {confirm: "Are you sure!"}, :method => :delete,
-                      class: "btn btn-primary btn-xs btn-red-alt" do %>
+                      class: "btn btn-danger btn-xs btn-red-alt" do %>
                       Delete
                   <% end %>
                 </td>

@@ -1,5 +1,5 @@
 class DoctorsController < ApplicationController
-  before_action :load_doctor, only: [:edit, :destroy]
+  before_action :load_doctor, only: [:edit, :update, :destroy]
   def index
     @doctors = Doctor.all
   end
@@ -22,6 +22,11 @@ class DoctorsController < ApplicationController
   end
 
   def update
+    if @doctor.update(doctor_params)
+      redirect_to doctors_path, notice: "Doctor Successfully Updated"
+    else
+      render :edit
+    end
   end
 
   def destroy
