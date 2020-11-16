@@ -29,10 +29,12 @@
                 <td>
                   <%= link_to edit_doctor_path(doctor),
                       class: "btn btn-primary btn-xs btn-green-alt" do %>
+                      <i class="fas fa-edit"></i>
                       Edit
                   <% end %>
                   <%= link_to doctor_path(doctor), data: {confirm: "Are you sure!"}, :method => :delete,
                       class: "btn btn-danger btn-xs btn-red-alt" do %>
+                      <i class="fas fa-trash-alt"></i>
                       Delete
                   <% end %>
                 </td>

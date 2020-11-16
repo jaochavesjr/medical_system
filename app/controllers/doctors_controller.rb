@@ -10,7 +10,6 @@ class DoctorsController < ApplicationController
 
   def create
     doctor = Doctor.create(doctor_params)
-    doctor.crm_uf.downcase
     if doctor.save!
       redirect_to doctors_path, notice: "Doctor Successfully Created"
     else
@@ -41,14 +40,6 @@ class DoctorsController < ApplicationController
 
   def doctor_params
     params.require(:doctor).permit(:name, :crm, :crm_uf)
-  end
-
-  def save_doctor!
-    if @category.save!
-      render :index
-    else
-      render :new
-    end
   end
 
   def load_doctor
