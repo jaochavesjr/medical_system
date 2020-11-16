@@ -1,2 +1,48 @@
-<h1>Patients#index</h1>
-<p>Find me in app/views/patients/index.html.erb</p>
+<div class="container-fluid">
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary"> New Patient
+        <a href="/patients/new">
+          <button type="button" class="btn btn-success" style="margin-left:15px ;"><i class="fas fa-user-plus"></i></button>
+        </a>
+      </h6>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table id="myTable" class="table table-bordered table-striped table-hover" width="100%" cellspacing="0">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>CPF</th>
+              <th>Birth Date</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @patients.each do |patient| %>
+              <tr>
+                <td> <%= patient.id %> </td>
+                <td> <%= patient.name %> </td>
+                <td> <%= patient.cpf %> </td>
+                <td> <%= patient.birth_date %> </td>
+                <td>
+                  <%= link_to edit_patient_path(patient),
+                    class: "btn btn-primary btn-xs btn-green-alt" do %>
+                      <i class="fas fa-edit"></i>
+                      Edit
+                  <% end %>
+                  <%= link_to patient_path(patient), data: {confirm: "Are you sure!"}, :method => :delete,
+                    class: "btn btn-danger btn-xs btn-red-alt" do %>
+                      <i class="fas fa-trash-alt"></i>
+                      Delete
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

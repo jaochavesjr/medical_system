@@ -1,7 +1,7 @@
 <div class="card" style="height: 30rem; padding-top: 4%;">
   <div class="row">
     <div class="col-12">
-      <%= form_for @patient, url: {action: "create"} do |p| %>
+      <%= form_for @patient, url: {action: "update"} do |p| %>
         <div class="container">
           <div class="form-row">
             <div class="form-group col-md-12">
@@ -34,7 +34,7 @@
             <div class="form-group col-md-12">
               <div class="col-sm-8">
                 <div class="float-right">
-                  <button type="submit" class="btn btn-success"><i class="fas fa-save mr-1"></i>Save</button>
+                   <button type="submit" class="btn btn-success"><i class="fas fa-save mr-1"></i>Save</button>
                   <%= link_to patients_path(p), :method => :get, class: "btn btn-secondary" do %>
                     <i class="fas fa-save mr-1"></i>Cancel
                   <% end %>
