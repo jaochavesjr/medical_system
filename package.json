@@ -10,7 +10,9 @@
     "bootstrap": "^4.5.3",
     "datatables.net-bs4": "^1.10.22",
     "jquery": "^3.5.1",
-    "jquery.easing": "^1.4.1"
+    "jquery.easing": "^1.4.1",
+    "toastify-js": "^1.9.3",
+    "toastr": "^2.1.4"
   },
   "version": "0.1.0",
   "devDependencies": {

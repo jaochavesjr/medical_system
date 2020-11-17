@@ -1,0 +1,61 @@
+<h6 class="m-3 font-weight-bold text-primary"> Edit Appointment </h6>
+<div class="card" style="height: 30rem; padding-top: 4%;">
+  <div class="col-12">
+    <%= form_for @appointment, url: {action: "update"} do |a| %>
+      <div class="container">
+
+        <div class="form-row">
+          <div class="form-group col-md-7">
+            <div class="col-sm-4">
+              <label for="">Starts At</label>
+              <%= a.date_select :starts_at, class: "form-control" %>
+              <%= a.time_select :starts_at, :ignore_date => true, class: "form-control" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-7">
+            <div class="col-sm-4">
+              <label for="">Ends At</label>
+              <%= a.date_select :ends_at, class: "form-control" %>
+              <%= a.time_select :ends_at, :ignore_date => true, class: "form-control" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            <div class="col-sm-8">
+              <label for="">Patient</label>
+                <%= a.select :patient_id, Patient.all { |user| [user.name, user.id] }, class: "form-control" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            <div class="col-sm-8">
+              <label for="">Doctor</label>
+                <%= a.select :doctor_id, Doctor.all { |user| [user.name, user.id] }, class: "form-control" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            <div class="col-sm-8">
+              <div class="float-right">
+                <button type="submit" class="btn btn-success"><i class="fas fa-save mr-1"></i>Save</button>
+                <%= link_to appointment_path(a), :method => :get, class: "btn btn-secondary" do %>
+                  <i class="fas fa-save mr-1"></i>Cancel
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <% end %>
+  </div>
+</div>
