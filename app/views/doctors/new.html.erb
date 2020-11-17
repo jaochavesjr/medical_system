@@ -1,4 +1,15 @@
 <h6 class="m-3 font-weight-bold text-primary"> New Doctor </h6>
+<% if @doctor.errors.any? %>
+  <div class="alert alert-danger alert-dismissable">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+    <ul>
+      <% @doctor.errors.full_messages.each do |message| %>
+        <li> <%= message %> </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <div class="card" style="height: 30rem; padding-top: 4%;">
   <div class="col-12">
     <%= form_for @doctor, url: {action: "create"} do |d| %>
@@ -35,8 +46,8 @@
             <div class="col-sm-8">
               <div class="float-right">
                 <button type="submit" class="btn btn-success"><i class="fas fa-save mr-1"></i>Save</button>
-                <%= link_to :back, class: "btn btn-secondary" do %>
-                  <i class="fas fa-arrow-alt-circle-left"></i> Back
+                <%= link_to doctors_path, :method => :get, class: "btn btn-secondary" do %>
+                    <i class="fas fa-window-close"></i>   Cancel
                 <% end %>
               </div>
             </div>

@@ -10,6 +10,7 @@ require("@rails/activestorage").start()
 require("channels")
 require("datatables.net-bs4")
 require("src/sb-admin-2.min")
+require("bootstrap-growl-ifightcrime/jquery.bootstrap-growl")
 
 import $ from 'jquery';
 global.$ = jQuery;
