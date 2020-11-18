@@ -9,9 +9,9 @@ class AppointmentsController < ApplicationController
   end
 
   def create
-    appointment = Appointment.create(appointment_params)
-    if appointment.save!
-      redirect_to appointment_path, notice: "Appointment Successfully Created"
+    @appointment = Appointment.create(appointment_params)
+    if @appointment.save
+      redirect_to new_appointment_path, notice: "Appointment Successfully Created"
     else
       render :new
     end
@@ -22,7 +22,7 @@ class AppointmentsController < ApplicationController
 
   def update
     if @appointment.update(appointment_params)
-      redirect_to appointment_path, notice: "Appointment Successfully Updated"
+      redirect_to new_appointment_path, notice: "Appointment Successfully Updated"
     else
       render :edit
     end
@@ -30,16 +30,16 @@ class AppointmentsController < ApplicationController
 
   def destroy
     if @appointment.destroy
-      redirect_to appointment_path, notice: "Appointment Successfully Deleted"
+      redirect_to appointments_path, notice: "Appointment Successfully Deleted"
     else
-      render appointment_path, notice: @appointment.errors.messages
+      render :index
     end
   end
 
   private
 
   def appointment_params
-    params.require(:appointment).permit(:starts_at, :ends_at, :patient, :doctor)
+    params.require(:appointment).permit(:starts_at, :ends_at, :patient_id, :doctor_id)
   end
 
   def load_appointment

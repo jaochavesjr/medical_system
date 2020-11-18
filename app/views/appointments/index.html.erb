@@ -26,8 +26,8 @@
                 <td> <%= appointment.id %> </td>
                 <td> <%= appointment.starts_at %> </td>
                 <td> <%= appointment.ends_at %> </td>
-                <td> <%= appointment.patient%> </td>
-                <td> <%= appointment.doctor%> </td>
+                <td> <%= appointment.patient.name %> </td>
+                <td> <%= appointment.doctor.name %> </td>
                 <td>
                   <%= link_to edit_appointment_path(appointment),
                       class: "btn btn-primary btn-xs btn-green-alt" do %>

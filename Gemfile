@@ -11,11 +11,14 @@ gem 'sass-rails', '>= 6'
 gem 'webpacker', '~> 4.0'
 gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.2', require: false
-gem 'toastr-rails'
+gem 'validates_cpf_cnpj'
 
 group :development, :test do
   gem 'pry-byebug'
+  gem 'factory_bot_rails'
+  gem 'faker'
   gem 'rspec-rails', '~> 4.0.1'
+  gem 'shoulda-matchers', '~> 4.0'
 end
 
 group :development do

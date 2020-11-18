@@ -1,4 +1,14 @@
 <h6 class="m-3 font-weight-bold text-primary"> New Patient </h6>
+<% if @patient.errors.any? %>
+  <div class="alert alert-danger alert-dismissable">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+    <ul>
+      <% @patient.errors.full_messages.each do |message| %>
+        <li> <%= message %> </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 <div class="card" style="height: 30rem; padding-top: 4%;">
   <div class="col-12">
     <%= form_for @patient, url: {action: "create"} do |p| %>

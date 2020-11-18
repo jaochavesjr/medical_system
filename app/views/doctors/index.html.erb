@@ -1,4 +1,7 @@
 <div class="container-fluid">
+<% if @doctor %>
+<%= render partial: "layouts/shared/doctor_errors_messages", object: @doctor %>
+<% end %>
   <div class="card shadow mb-4">
     <div class="card-header py-3">
         <a href="/doctors/new">

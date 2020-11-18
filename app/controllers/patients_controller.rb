@@ -9,9 +9,9 @@ class PatientsController < ApplicationController
   end
 
   def create
-    patient = Patient.create(patient_params)
-    if patient.save!
-      redirect_to patients_path, notice: "Patient Successfully Created"
+    @patient = Patient.create(patient_params)
+    if @patient.save
+      redirect_to new_patient_path, notice: "Patient Successfully Created"
     else
       render :new
     end
@@ -32,7 +32,7 @@ class PatientsController < ApplicationController
     if @patient.destroy
       redirect_to patients_path, notice: "Patient Successfully Deleted"
     else
-      render patients_path, notice: @patient.errors.messages
+      redirect_to patients_path
     end
   end
 

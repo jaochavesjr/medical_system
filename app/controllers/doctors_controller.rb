@@ -1,6 +1,9 @@
 class DoctorsController < ApplicationController
   before_action :load_doctor, only: [:edit, :update, :destroy]
   def index
+    if params[:id]
+      @doctor = Doctor.find(params[:id])
+    end
     @doctors = Doctor.all
   end
 
@@ -29,10 +32,13 @@ class DoctorsController < ApplicationController
   end
 
   def destroy
-    if @doctor.destroy
+    if @doctor.no_patient?
+      @doctor.destroy
       redirect_to doctors_path, notice: "Doctor Successfully Deleted"
     else
-      render doctors_path, notice: @doctor.errors.messages
+      @doctors = Doctor.all
+      @doctor
+      render :index
     end
   end
 
