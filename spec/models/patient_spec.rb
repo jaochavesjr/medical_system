@@ -1,5 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Patient, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { is_expected.to validate_presence_of(:name) }
+  it { is_expected.to validate_presence_of(:birth_date) }
+  it { is_expected.to validate_presence_of(:cpf) }
+  it { is_expected.to validate_uniqueness_of(:cpf)}
+
+  # it { is_expected.to have_many(:patients).through(:appointments) }
 end

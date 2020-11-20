@@ -1,25 +1,33 @@
 <h6 class="m-3 font-weight-bold text-primary"> New Appointment </h6>
+<% if @appointment.errors.any? %>
+  <div class="alert alert-danger alert-dismissable">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+    <ul>
+      <% @appointment.errors.full_messages.each do |message| %>
+        <li> <%= message %> </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 <div class="card" style="height: 30rem; padding-top: 4%;">
     <div class="col-12">
       <%= form_for @appointment, url: {action: "create"} do |a| %>
         <div class="container">
 
           <div class="form-row">
-            <div class="form-group col-md-12s">
+            <div class="form-group col-md-12">
               <div class="col-sm-12">
                 <label for="">Starts At</label>
-                <%= a.date_select :starts_at, class: "form-control" %>
-                <%= a.time_select :starts_at, :ignore_date => true, class: "form-control" %>
+                <%= a.datetime_select :starts_at, {ampm:  false, class: "form-control"} %>
               </div>
             </div>
           </div>
 
-          <div class="form-row">
+           <div class="form-row">
             <div class="form-group col-md-12">
               <div class="col-sm-12">
                 <label for="">Ends At</label>
-                <%= a.date_select :ends_at, class: "form-control" %>
-                <%= a.time_select :ends_at, :ignore_date => true, class: "form-control" %>
+                <%= a.datetime_select :ends_at, class: "form-control" %>
               </div>
             </div>
           </div>
@@ -28,7 +36,7 @@
             <div class="form-group col-md-12">
               <div class="col-sm-12">
                 <label class="col-lg-1 control-label" for="">Patient</label>
-                 <%= a.collection_select :patient_id, Patient.all, :id, :name, class: "form-control" %>
+                 <%= a.collection_select :patient_id, Patient.all, :id, :name, :include_blank => true, class: "form-control" %>
               </div>
             </div>
           </div>
@@ -37,7 +45,7 @@
             <div class="form-group col-md-12">
               <div class="col-sm-12">
                 <label class="col-lg-1 control-label" for="">Doctor</label>
-                <%= a.collection_select :doctor_id, Doctor.all, :id, :name, class: "form-control" %>
+                <%= a.collection_select :doctor_id, Doctor.all, :id, :name, :include_blank => true, class: "form-control" %>
               </div>
             </div>
           </div>
@@ -47,8 +55,8 @@
               <div class="col-sm-8">
                 <div class="float-right">
                   <button type="submit" class="btn btn-success"><i class="fas fa-save mr-1"></i>Save</button>
-                  <%= link_to appointment_path(a), :method => :get, class: "btn btn-secondary" do %>
-                    <i class="fas fa-save mr-1"></i>Cancel
+                  <%= link_to appointments_path, :method => :get, class: "btn btn-secondary" do %>
+                    <i class="fas fa-window-close"></i>   Cancel
                   <% end %>
                 </div>
               </div>

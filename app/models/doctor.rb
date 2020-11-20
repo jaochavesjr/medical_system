@@ -6,7 +6,7 @@ class Doctor < ApplicationRecord
   validates :name, presence: true
   validates :crm, presence: true
   validates :crm_uf, presence: true
-  validates :crm, uniqueness: { scope: :crm_uf }
+  validates :crm, uniqueness: { scope: :crm_uf, case_sensitive: true }
 
   def no_patient?
     if patients.count > 0
@@ -16,8 +16,4 @@ class Doctor < ApplicationRecord
       true
     end
   end
-  # def check_for_patients?
-  #   errors.add(:base, "Doctor cannot be deleted") unless patients.count == 0
-  #   errors.blank?
-  # end
 end
