@@ -9,10 +9,14 @@ docker-compose run --rm app bundle install
 docker-compose run --rm app bundle exec rails db:create db:migrate
 docker-compose run --rm app bundle exec rails webpacker:install
 ```
-if you need
-yarn install
+
 ```
+###if you need
+
+yarn install
+
 ### to run the application
+
 docker-compose up
 
 ### Dependencies & Versions
