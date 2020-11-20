@@ -1,24 +1,26 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### build project via docker
 
-Things you may want to cover:
+```
+cd medical_system
+docker-compose build
+docker-compose run --rm app bundle install
+docker-compose run --rm app bundle exec rails db:create db:migrate
+docker-compose run --rm app bundle exec rails webpacker:install
+```
+if you need
+yarn install
+```
+### to run the application
+docker-compose up
 
-* Ruby version
+### Dependencies & Versions
 
-* System dependencies
+* Ruby 2.7.1
 
-* Configuration
+* Rails 6.0.3.4
 
-* Database creation
+* Database: Postgresql
 
-* Database initialization
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
