@@ -6,7 +6,7 @@ class AppointmentIntervalValidator < ActiveModel::Validator
     end
     @starts_at = record.starts_at
     @ends_at = record.ends_at
-    if @starts_at < @starts_at
+    if @starts_at < @ends_at
       record.errors[:base] << "date ends must be greater than start"
     elsif  @starts_at.hour < 9 || @starts_at.hour == 12 || @starts_at.hour > 17
       record.errors[:base] << "start time out of office hours"
